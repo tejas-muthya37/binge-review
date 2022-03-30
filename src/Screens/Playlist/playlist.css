@@ -1,0 +1,32 @@
+.Playlist {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem;
+    gap: 3rem;
+}
+
+.playlist-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 4rem;
+}
+
+
+.playlist-section>*:not(h1) {
+    width: 17.5rem;
+}
+
+.Playlist h1 {
+    text-align: left;
+}
+
+.Playlist h1.empty-playlist {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .Playlist h1 {
+        font-size: 1.5rem;
+    }
+}
