@@ -1,0 +1,48 @@
+.History {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.history-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 4rem;
+}
+
+.history-section>*:not(h1) {
+    width: 17.5rem;
+}
+
+.History h1 {
+    text-align: left;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-header button {
+    border: none;
+    height: 2.25rem;
+    width: 7.5rem;
+    border-radius: 2px;
+    color: whitesmoke;
+    background-color: var(--binge-red);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.History h1.empty-history {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .History h1 {
+        font-size: 1.5rem;
+    }
+}
