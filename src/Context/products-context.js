@@ -5,6 +5,7 @@ const ProductsContext = createContext(null);
 const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
 
 const addToLikedPostRequest = (passedPayload) => {
+  console.log(encodedToken);
   fetch("/api/user/likes", {
     method: "POST",
     headers: {
@@ -13,7 +14,10 @@ const addToLikedPostRequest = (passedPayload) => {
       authorization: encodedToken,
     },
     body: JSON.stringify({ video: passedPayload }),
-  });
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const removeFromLikedDeleteRequest = (passedPayload) => {
@@ -97,7 +101,8 @@ const addPlaylistPostRequest = (passedPayload) => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const removePlaylistDeleteRequest = (passedPayload) => {

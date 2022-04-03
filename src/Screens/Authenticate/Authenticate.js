@@ -9,7 +9,7 @@ function Authenticate(props) {
 
   useEffect(() => {
     localStorage.setItem("ENCODED_TOKEN_2", encodedToken);
-  });
+  }, [encodedToken]);
 
   let navigate = useNavigate();
 

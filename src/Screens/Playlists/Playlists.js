@@ -5,9 +5,12 @@ import Box from "@mui/material/Box";
 import { useState, useRef, useEffect } from "react";
 import { useProducts } from "./../../Context/products-context";
 import { useToken } from "./../../Context/token-context";
+import { useToast } from "../../Context/toast-context";
 
 const Playlists = () => {
   const { encodedToken } = useToken();
+
+  const { toggleToast, toastVisibility, toastColor, toastText } = useToast();
 
   useEffect(() => {
     fetch("/api/user/playlists", {
@@ -53,6 +56,16 @@ const Playlists = () => {
 
   return (
     <div className="Playlists">
+      <p
+        style={{
+          visibility: toastVisibility,
+          backgroundColor: toastColor.backgroundColor,
+          color: toastColor.color,
+        }}
+        className="message-toast"
+      >
+        {toastText}
+      </p>
       <div className="playlists-header">
         <h1>Playlists</h1>
         <h3 onClick={handleOpen}>+ ADD A NEW PLAYLIST</h3>
@@ -90,20 +103,37 @@ const Playlists = () => {
           </form>
           <button
             onClick={() => {
-              dispatch({
-                type: "Add Playlist",
-                payload: {
-                  id: state.playlistsArray.length + 1,
-                  name: inputRef.current.value,
-                  videos: [],
-                  mockBeePayload: {
-                    title: inputRef.current.value,
-                    description: "",
+              const foundPlaylist = state.playlistsArray.find(
+                (playlist) => playlist.name === inputRef.current.value
+              );
+              if (foundPlaylist) {
+                toggleToast(
+                  `Playlist - ${inputRef.current.value} already exists!`,
+                  "red",
+                  "whitesmoke"
+                );
+              } else if (inputRef.current.value.length === 0) {
+                toggleToast(
+                  "Please enter a name for the playlist!",
+                  "red",
+                  "whitesmoke"
+                );
+              } else {
+                dispatch({
+                  type: "Add Playlist",
+                  payload: {
                     id: state.playlistsArray.length + 1,
+                    name: inputRef.current.value,
+                    videos: [],
+                    mockBeePayload: {
+                      title: inputRef.current.value,
+                      description: "",
+                      id: state.playlistsArray.length + 1,
+                    },
                   },
-                },
-              });
-              handleClose();
+                });
+                handleClose();
+              }
             }}
           >
             Add
