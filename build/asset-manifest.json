@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1f3345a2.css",
+    "main.js": "/static/js/main.af161250.js",
+    "static/media/drama-thumbnail-three.jpg": "/static/media/drama-thumbnail-three.d25d32e1cb087387ab2f.jpg",
+    "static/media/drama-thumbnail-two.jpg": "/static/media/drama-thumbnail-two.6886b8ac8f14e96833ab.jpg",
+    "static/media/drama-thumbnail-four.jpg": "/static/media/drama-thumbnail-four.e2225cb8d75f884db2cc.jpg",
+    "static/media/romance-thumbnail-one.jpg": "/static/media/romance-thumbnail-one.541ca4746333bd56a966.jpg",
+    "static/media/romance-category.jpg": "/static/media/romance-category.f49a65c51a24de4f9081.jpg",
+    "static/media/drama-thumbnail-one.jpg": "/static/media/drama-thumbnail-one.2db00b556d38e2af236c.jpg",
+    "static/media/action-category.jpg": "/static/media/action-category.6fbb0379192770568716.jpg",
+    "static/media/thriller-thumbnail-one.jpg": "/static/media/thriller-thumbnail-one.883fcde37ad87cd55dd0.jpg",
+    "static/media/romance-thumbnail-four.jpg": "/static/media/romance-thumbnail-four.7f87ee16e7a4776c91a4.jpg",
+    "static/media/drama-category.jpg": "/static/media/drama-category.c718b35047fcca1917c4.jpg",
+    "static/media/action-thumbnail-four.jpg": "/static/media/action-thumbnail-four.1af2de4051104de82543.jpg",
+    "static/media/thriller-thumbnail-two.jpg": "/static/media/thriller-thumbnail-two.dde6d188315b5297ebc4.jpg",
+    "static/media/romance-thumbnail-two.jpg": "/static/media/romance-thumbnail-two.2541a08cde8419af7185.jpg",
+    "static/media/action-thumbnail-three.jpg": "/static/media/action-thumbnail-three.7884633fcd197b66436e.jpg",
+    "static/media/thriller-thumbnail-three.jpg": "/static/media/thriller-thumbnail-three.a862027c0c220363c78d.jpg",
+    "static/media/thriller-category.jpg": "/static/media/thriller-category.79112a827c89b0e59393.jpg",
+    "static/media/action-thumbnail-one.jpg": "/static/media/action-thumbnail-one.f1c89c95af2ca540c02d.jpg",
+    "static/media/thriller-thumbnail-four.jpg": "/static/media/thriller-thumbnail-four.2956e7aff87f97422849.jpg",
+    "static/media/romance-thumbnail-three.jpg": "/static/media/romance-thumbnail-three.8ad32eed4ad7293e2eca.jpg",
+    "static/media/action-thumbnail-two.jpg": "/static/media/action-thumbnail-two.7e12c1329899e75cf254.jpg",
+    "index.html": "/index.html",
+    "main.1f3345a2.css.map": "/static/css/main.1f3345a2.css.map",
+    "main.af161250.js.map": "/static/js/main.af161250.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f3345a2.css",
+    "static/js/main.af161250.js"
+  ]
+}
