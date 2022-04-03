@@ -1,3 +1,5 @@
+@import '~video-react/dist/video-react.css';
+
 .movie-card-footer {
     display: flex;
     flex-direction: column;
