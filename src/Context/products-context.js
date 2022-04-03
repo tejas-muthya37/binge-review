@@ -90,7 +90,7 @@ const clearHistoryDeleteRequest = (passedPayload) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: passedPayload.token,
+      authorization: passedPayload,
     },
   })
     .then((res) => res.json())

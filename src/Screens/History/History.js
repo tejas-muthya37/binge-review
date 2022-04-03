@@ -44,7 +44,7 @@ const History = () => {
             onClick={() =>
               dispatch({
                 type: "Clear History",
-                payload: { token: encodedToken },
+                payload: encodedToken,
               })
             }
           >
