@@ -4,7 +4,6 @@ import App from "./App";
 import { ProductsProvider } from "./Context/products-context.js";
 import { VideosProvider } from "./Context/videos-context.js";
 import { ToastProvider } from "./Context/toast-context.js";
-import { NavbarProvider } from "./Context/navbar-context.js";
 import { TokenProvider } from "./Context/token-context.js";
 import { makeServer } from "./server";
 
@@ -15,11 +14,9 @@ ReactDOM.render(
     <ProductsProvider>
       <VideosProvider>
         <ToastProvider>
-          <NavbarProvider>
-            <TokenProvider>
-              <App />
-            </TokenProvider>
-          </NavbarProvider>
+          <TokenProvider>
+            <App />
+          </TokenProvider>
         </ToastProvider>
       </VideosProvider>
     </ProductsProvider>
