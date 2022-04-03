@@ -17,9 +17,7 @@ const Liked = () => {
         Accept: "application/json",
         authorization: encodedToken,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    });
   }, [encodedToken]);
 
   useEffect(() => {

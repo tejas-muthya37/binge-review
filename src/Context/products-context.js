@@ -13,10 +13,7 @@ const addToLikedPostRequest = (passedPayload) => {
       authorization: encodedToken,
     },
     body: JSON.stringify({ video: passedPayload }),
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  });
 };
 
 const removeFromLikedDeleteRequest = (passedPayload) => {
@@ -27,10 +24,7 @@ const removeFromLikedDeleteRequest = (passedPayload) => {
       Accept: "application/json",
       authorization: encodedToken,
     },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  });
 };
 
 const addToWatchLaterPostRequest = (passedPayload) => {
@@ -42,10 +36,7 @@ const addToWatchLaterPostRequest = (passedPayload) => {
       authorization: encodedToken,
     },
     body: JSON.stringify({ video: passedPayload }),
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  });
 };
 
 const removeFromWatchLaterDeleteRequest = (passedPayload) => {
@@ -56,10 +47,7 @@ const removeFromWatchLaterDeleteRequest = (passedPayload) => {
       Accept: "application/json",
       authorization: encodedToken,
     },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  });
 };
 
 const addToHistoryPostRequest = (passedPayload) => {
@@ -71,10 +59,7 @@ const addToHistoryPostRequest = (passedPayload) => {
       authorization: encodedToken,
     },
     body: JSON.stringify({ video: passedPayload }),
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  });
 };
 
 const removeFromHistoryDeleteRequest = (passedPayload) => {
@@ -85,10 +70,7 @@ const removeFromHistoryDeleteRequest = (passedPayload) => {
       Accept: "application/json",
       authorization: encodedToken,
     },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  });
 };
 
 const clearHistoryDeleteRequest = () => {
@@ -99,10 +81,7 @@ const clearHistoryDeleteRequest = () => {
       Accept: "application/json",
       authorization: encodedToken,
     },
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  });
 };
 
 const addPlaylistPostRequest = (passedPayload) => {
@@ -118,8 +97,7 @@ const addPlaylistPostRequest = (passedPayload) => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then((data) => console.log(data));
 };
 
 const removePlaylistDeleteRequest = (passedPayload) => {
@@ -132,8 +110,7 @@ const removePlaylistDeleteRequest = (passedPayload) => {
     },
   })
     .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then((data) => console.log(data));
 };
 
 const addToPlaylistPostRequest = (passedPayload) => {
@@ -145,10 +122,7 @@ const addToPlaylistPostRequest = (passedPayload) => {
       authorization: encodedToken,
     },
     body: JSON.stringify({ video: passedPayload.video }),
-  })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  });
 };
 
 const removeFromPlaylistDeleteRequest = (passedPayload) => {
@@ -162,10 +136,7 @@ const removeFromPlaylistDeleteRequest = (passedPayload) => {
         authorization: encodedToken,
       },
     }
-  )
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+  );
 };
 
 const reducer = (state, action) => {
