@@ -20,9 +20,7 @@ const Playlists = () => {
         Accept: "application/json",
         authorization: encodedToken,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    });
   }, [encodedToken]);
 
   const inputRef = useRef(null);

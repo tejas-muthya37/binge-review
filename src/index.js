@@ -10,16 +10,14 @@ import { makeServer } from "./server";
 makeServer();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ProductsProvider>
-      <VideosProvider>
-        <ToastProvider>
-          <TokenProvider>
-            <App />
-          </TokenProvider>
-        </ToastProvider>
-      </VideosProvider>
-    </ProductsProvider>
-  </React.StrictMode>,
+  <ProductsProvider>
+    <VideosProvider>
+      <ToastProvider>
+        <TokenProvider>
+          <App />
+        </TokenProvider>
+      </ToastProvider>
+    </VideosProvider>
+  </ProductsProvider>,
   document.getElementById("root")
 );

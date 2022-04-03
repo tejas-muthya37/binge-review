@@ -113,7 +113,7 @@ export const addVideoToPlaylistHandler = function (schema, request) {
     const playlist = user.playlists.find(
       (item) => item.id === Number(playlistId)
     );
-    if (playlist.videos.some((item) => item.id === video.id)) {
+    if (playlist.videos.some((item) => item._id === video._id)) {
       return new Response(
         409,
         {},
