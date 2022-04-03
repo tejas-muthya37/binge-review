@@ -1,0 +1,41 @@
+.movie-card-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-card-footer .footer-icons-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.movie-card-footer .footer-icons-group>* {
+    cursor: pointer;
+}
+
+.playlist-name {
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.playlist-name #modal-checkbox {
+    accent-color: var(--binge-red);
+    transform: scale(1.5);
+}
+
+.modal-button {
+    color: var(--binge-red);
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .movie-card-footer p {
+        font-size: 1rem;
+    }
+}
