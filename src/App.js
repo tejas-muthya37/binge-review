@@ -84,7 +84,7 @@ function App() {
           path="/login"
           element={
             <Authenticate
-              cardTitle="LOGIN"
+              cardTitle="SIGN IN"
               checkboxLabel="Remember me"
               alternate="Create New Account"
             />

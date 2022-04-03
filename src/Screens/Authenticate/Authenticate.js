@@ -1,18 +1,19 @@
 import "./authenticate.css";
-import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import { useToast } from "./../../Context/toast-context";
-import { useNavbar } from "./../../Context/navbar-context";
 import { useToken } from "./../../Context/token-context";
 
 function Authenticate(props) {
-  const { setEncodedToken } = useToken();
+  const { encodedToken, setEncodedToken } = useToken();
+
+  useEffect(() => {
+    localStorage.setItem("ENCODED_TOKEN_2", encodedToken);
+  });
 
   let navigate = useNavigate();
 
   const { toggleToast, toastVisibility, toastColor, toastText } = useToast();
-
-  const { setNavbarButtonText } = useNavbar();
 
   const emailPattern = /\S+@\S+\.\S+/;
   const emailRef = useRef(null);
@@ -24,7 +25,7 @@ function Authenticate(props) {
       password: passwordRef.current.value,
     };
 
-    if (props.cardTitle === "LOGIN") {
+    if (props.cardTitle === "SIGN IN") {
       fetch("/api/auth/login", {
         method: "POST",
         headers: {
@@ -39,9 +40,7 @@ function Authenticate(props) {
           if (!data.errors) {
             emailRef.current.value = "";
             passwordRef.current.value = "";
-            localStorage.setItem("ENCODED_TOKEN_2", data.encodedToken);
             setEncodedToken(data.encodedToken);
-            setNavbarButtonText("SIGN OUT");
             navigate("/movies");
           } else {
             toggleToast(
@@ -78,9 +77,7 @@ function Authenticate(props) {
             if (!data.errors) {
               emailRef.current.value = "";
               passwordRef.current.value = "";
-              localStorage.setItem("ENCODED_TOKEN_2", data.encodedToken);
               setEncodedToken(data.encodedToken);
-              setNavbarButtonText("SIGN OUT");
               navigate("/movies");
             }
           });
@@ -122,7 +119,7 @@ function Authenticate(props) {
             <input checked id="checked-checkbox" type="checkbox" />
             <label for="checked-checkbox">{props.checkboxLabel}</label>
           </div>
-          {props.cardTitle === "LOGIN" && (
+          {props.cardTitle === "SIGN IN" && (
             <div>
               <a href="/">Forgot Password</a>
             </div>
@@ -130,9 +127,9 @@ function Authenticate(props) {
         </div> */}
         <button onClick={handleAuth}>Next</button>
         <p className="alternate-cta">
-          <a href="/">
+          <Link to={props.cardTitle === "SIGN IN" ? "/signup" : "/login"}>
             {props.alternate} <span>{">"}</span>
-          </a>
+          </Link>
         </p>
       </div>
     </div>
