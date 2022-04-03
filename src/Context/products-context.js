@@ -2,18 +2,15 @@ import { useReducer, useContext, createContext } from "react";
 
 const ProductsContext = createContext(null);
 
-const encodedToken = localStorage.getItem("ENCODED_TOKEN_2");
-
 const addToLikedPostRequest = (passedPayload) => {
-  console.log(encodedToken);
   fetch("/api/user/likes", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
-    body: JSON.stringify({ video: passedPayload }),
+    body: JSON.stringify({ video: passedPayload.video }),
   })
     .then((res) => res.json())
     .then((data) => console.log(data))
@@ -21,14 +18,17 @@ const addToLikedPostRequest = (passedPayload) => {
 };
 
 const removeFromLikedDeleteRequest = (passedPayload) => {
-  fetch(`/api/user/likes/${passedPayload._id}`, {
+  fetch(`/api/user/likes/${passedPayload.video._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
-  });
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const addToWatchLaterPostRequest = (passedPayload) => {
@@ -37,21 +37,27 @@ const addToWatchLaterPostRequest = (passedPayload) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
-    body: JSON.stringify({ video: passedPayload }),
-  });
+    body: JSON.stringify({ video: passedPayload.video }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const removeFromWatchLaterDeleteRequest = (passedPayload) => {
-  fetch(`/api/user/watchlater/${passedPayload._id}`, {
+  fetch(`/api/user/watchlater/${passedPayload.video._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
-  });
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const addToHistoryPostRequest = (passedPayload) => {
@@ -60,32 +66,41 @@ const addToHistoryPostRequest = (passedPayload) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
-    body: JSON.stringify({ video: passedPayload }),
-  });
+    body: JSON.stringify({ video: passedPayload.video }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const removeFromHistoryDeleteRequest = (passedPayload) => {
-  fetch(`/api/user/history/${passedPayload._id}`, {
+  fetch(`/api/user/history/${passedPayload.video._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
-  });
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
-const clearHistoryDeleteRequest = () => {
+const clearHistoryDeleteRequest = (passedPayload) => {
   fetch("/api/user/history/all", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
-  });
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const addPlaylistPostRequest = (passedPayload) => {
@@ -94,7 +109,7 @@ const addPlaylistPostRequest = (passedPayload) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
     body: JSON.stringify({
       playlist: passedPayload.mockBeePayload,
@@ -106,16 +121,17 @@ const addPlaylistPostRequest = (passedPayload) => {
 };
 
 const removePlaylistDeleteRequest = (passedPayload) => {
-  fetch(`/api/user/playlists/${passedPayload}`, {
+  fetch(`/api/user/playlists/${passedPayload.playlistId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
   })
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const addToPlaylistPostRequest = (passedPayload) => {
@@ -124,10 +140,13 @@ const addToPlaylistPostRequest = (passedPayload) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      authorization: encodedToken,
+      authorization: passedPayload.token,
     },
     body: JSON.stringify({ video: passedPayload.video }),
-  });
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const removeFromPlaylistDeleteRequest = (passedPayload) => {
@@ -138,85 +157,88 @@ const removeFromPlaylistDeleteRequest = (passedPayload) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        authorization: encodedToken,
+        authorization: passedPayload.token,
       },
     }
-  );
+  )
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "Add to Liked":
       const likedVideoFound = state.likedArray.find(
-        (video) => video._id === action.payload._id
+        (video) => video._id === action.payload.video._id
       );
       if (likedVideoFound) {
         removeFromLikedDeleteRequest(action.payload);
         return {
           ...state,
           likedArray: state.likedArray.filter(
-            (movie) => movie.id !== action.payload.id
+            (movie) => movie._id !== action.payload.video._id
           ),
         };
       } else {
         addToLikedPostRequest(action.payload);
         return {
           ...state,
-          likedArray: [...state.likedArray, action.payload],
+          likedArray: [...state.likedArray, action.payload.video],
           dislikedArray: state.dislikedArray.filter(
-            (movie) => movie.id !== action.payload.id
+            (movie) => movie._id !== action.payload.video._id
           ),
         };
       }
     case "Remove from Liked":
       const dislikedVideoFound = state.dislikedArray.find(
-        (video) => video.id === action.payload.id
+        (video) => video._id === action.payload.video._id
       );
       removeFromLikedDeleteRequest(action.payload);
       if (dislikedVideoFound) {
         return {
           ...state,
           dislikedArray: state.dislikedArray.filter(
-            (movie) => movie.id !== action.payload.id
+            (movie) => movie._id !== action.payload.video._id
           ),
         };
       }
       return {
         ...state,
         likedArray: state.likedArray.filter(
-          (movie) => movie._id !== action.payload._id
+          (movie) => movie._id !== action.payload.video._id
         ),
-        dislikedArray: [...state.dislikedArray, action.payload],
+        dislikedArray: [...state.dislikedArray, action.payload.video],
       };
     case "Add to Watch Later":
       const watchLaterVideoFound = state.watchLaterArray.find(
-        (video) => video._id === action.payload._id
+        (video) => video._id === action.payload.video._id
       );
       if (watchLaterVideoFound) {
         removeFromWatchLaterDeleteRequest(action.payload);
         return {
           ...state,
           watchLaterArray: state.watchLaterArray.filter(
-            (movie) => movie._id !== action.payload._id
+            (movie) => movie._id !== action.payload.video._id
           ),
         };
       } else {
         addToWatchLaterPostRequest(action.payload);
         return {
           ...state,
-          watchLaterArray: [...state.watchLaterArray, action.payload],
+          watchLaterArray: [...state.watchLaterArray, action.payload.video],
         };
       }
     case "Add to History":
       if (
         state.historyArray.length === 0 ||
         state.historyArray[state.historyArray.length - 1]._id !==
-          action.payload._id
+          action.payload.video._id
       ) {
         addToHistoryPostRequest(action.payload);
         return {
           ...state,
-          historyArray: [...state.historyArray, action.payload],
+          historyArray: [...state.historyArray, action.payload.video],
         };
       } else {
         return state;
@@ -226,7 +248,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         historyArray: state.historyArray.filter(
-          (movie) => movie._id !== action.payload._id
+          (movie) => movie._id !== action.payload.video._id
         ),
       };
     case "Clear History":
@@ -246,7 +268,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         playlistsArray: state.playlistsArray.filter(
-          (playlist) => playlist.id !== action.payload
+          (playlist) => playlist.id !== action.payload.playlistId
         ),
       };
     case "Add to Playlist":
@@ -277,7 +299,7 @@ const reducer = (state, action) => {
       state.playlistsArray.map((playlist) => {
         if (playlist.id === action.payload.playlistId) {
           playlist.videos = playlist.videos.filter(
-            (video) => video.id !== action.payload.videoId
+            (video) => video._id !== action.payload.video._id
           );
           removeFromPlaylistDeleteRequest(action.payload);
         }

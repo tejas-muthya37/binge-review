@@ -79,7 +79,10 @@ const Playlists = () => {
               title={playlist.name}
               length={playlist.videos.length}
               removePlaylist={() =>
-                dispatch({ type: "Remove Playlist", payload: playlist.id })
+                dispatch({
+                  type: "Remove Playlist",
+                  payload: { playlistId: playlist.id, token: encodedToken },
+                })
               }
             />
           );
@@ -125,6 +128,7 @@ const Playlists = () => {
                     id: state.playlistsArray.length + 1,
                     name: inputRef.current.value,
                     videos: [],
+                    token: encodedToken,
                     mockBeePayload: {
                       title: inputRef.current.value,
                       description: "",

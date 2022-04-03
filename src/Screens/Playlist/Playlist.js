@@ -72,16 +72,28 @@ const Playlist = () => {
                       playlistPage={true}
                       category={movie.category}
                       addToLiked={() =>
-                        dispatch({ type: "Add to Liked", payload: movie })
+                        dispatch({
+                          type: "Add to Liked",
+                          payload: { video: movie, token: encodedToken },
+                        })
                       }
                       removeFromLiked={() =>
-                        dispatch({ type: "Remove from Liked", payload: movie })
+                        dispatch({
+                          type: "Remove from Liked",
+                          payload: { video: movie, token: encodedToken },
+                        })
                       }
                       addToWatchLater={() =>
-                        dispatch({ type: "Add to Watch Later", payload: movie })
+                        dispatch({
+                          type: "Add to Watch Later",
+                          payload: { video: movie, token: encodedToken },
+                        })
                       }
                       addToHistory={() =>
-                        dispatch({ type: "Add to History", payload: movie })
+                        dispatch({
+                          type: "Add to History",
+                          payload: { video: movie, token: encodedToken },
+                        })
                       }
                       removeFromPlaylist={() =>
                         dispatch({
@@ -89,6 +101,7 @@ const Playlist = () => {
                           payload: {
                             playlistId: playlist.id,
                             video: movie,
+                            token: encodedToken,
                           },
                         })
                       }

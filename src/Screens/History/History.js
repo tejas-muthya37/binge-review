@@ -40,7 +40,14 @@ const History = () => {
       <div className="history-header">
         {state.historyArray.length > 0 && <h1>History</h1>}
         {state.historyArray.length > 0 && (
-          <button onClick={() => dispatch({ type: "Clear History" })}>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "Clear History",
+                payload: { token: encodedToken },
+              })
+            }
+          >
             Clear History
           </button>
         )}
@@ -60,16 +67,28 @@ const History = () => {
                 title={movie.title}
                 historyPage={true}
                 addToLiked={() =>
-                  dispatch({ type: "Add to Liked", payload: movie })
+                  dispatch({
+                    type: "Add to Liked",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 removeFromLiked={() =>
-                  dispatch({ type: "Remove from Liked", payload: movie })
+                  dispatch({
+                    type: "Remove from Liked",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 addToWatchLater={() =>
-                  dispatch({ type: "Add to Watch Later", payload: movie })
+                  dispatch({
+                    type: "Add to Watch Later",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 removeFromHistory={() =>
-                  dispatch({ type: "Remove from History", payload: movie })
+                  dispatch({
+                    type: "Remove from History",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
               />
             );

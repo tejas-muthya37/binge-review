@@ -135,6 +135,7 @@ const Movie = (props) => {
                         dispatch({
                           type: "Add to Playlist",
                           payload: {
+                            token: encodedToken,
                             playlistId: playlist.id,
                             video: {
                               _id: props._id,

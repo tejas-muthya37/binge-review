@@ -3,9 +3,12 @@ import Movie from "./../Movie/Movie";
 import { useProducts } from "./../../Context/products-context.js";
 import { useVideos } from "./../../Context/videos-context";
 import { useEffect } from "react";
+import { useToken } from "../../Context/token-context";
 
 const CategoryMovies = ({ category }) => {
   const { stateVideo, dispatchVideo } = useVideos();
+
+  const { encodedToken } = useToken();
 
   useEffect(() => {
     fetch("/api/videos", {
@@ -49,16 +52,28 @@ const CategoryMovies = ({ category }) => {
                 title={movie.title}
                 category={movie.category}
                 addToLiked={() =>
-                  dispatch({ type: "Add to Liked", payload: movie })
+                  dispatch({
+                    type: "Add to Liked",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 removeFromLiked={() =>
-                  dispatch({ type: "Remove from Liked", payload: movie })
+                  dispatch({
+                    type: "Remove from Liked",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 addToWatchLater={() =>
-                  dispatch({ type: "Add to Watch Later", payload: movie })
+                  dispatch({
+                    type: "Add to Watch Later",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 addToHistory={() =>
-                  dispatch({ type: "Add to History", payload: movie })
+                  dispatch({
+                    type: "Add to History",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 likeButtonColor={
                   state.likedArray.find((element) => element.id === movie.id)

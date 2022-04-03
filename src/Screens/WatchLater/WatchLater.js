@@ -52,16 +52,28 @@ const WatchLater = () => {
                 title={movie.title}
                 notLikedPage={true}
                 addToLiked={() =>
-                  dispatch({ type: "Add to Liked", payload: movie })
+                  dispatch({
+                    type: "Add to Liked",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 removeFromLiked={() =>
-                  dispatch({ type: "Remove from Liked", payload: movie })
+                  dispatch({
+                    type: "Remove from Liked",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 addToWatchLater={() =>
-                  dispatch({ type: "Add to Watch Later", payload: movie })
+                  dispatch({
+                    type: "Add to Watch Later",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 addToHistory={() =>
-                  dispatch({ type: "Add to History", payload: movie })
+                  dispatch({
+                    type: "Add to History",
+                    payload: { video: movie, token: encodedToken },
+                  })
                 }
                 likeButtonColor={
                   state.likedArray.find((element) => element.id === movie.id)
