@@ -242,7 +242,7 @@ const reducer = (state, action) => {
         ),
       };
     case "Clear History":
-      clearHistoryDeleteRequest();
+      clearHistoryDeleteRequest(action.payload);
       return {
         ...state,
         historyArray: [],
