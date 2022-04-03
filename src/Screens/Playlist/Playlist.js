@@ -56,82 +56,72 @@ const Playlist = () => {
         <h1 className="empty-playlist">Playlist empty!</h1>
       )}
       <div className="playlist-section">
-        {state.playlistsArray.map((playlist) => {
-          return (
-            <div key={playlist.id}>
-              {playlist.videos.length > 0 &&
-                Number(playlistId) === playlist.id &&
-                playlist.videos.map((movie) => {
-                  return (
-                    <Movie
-                      key={movie.id}
-                      id={movie.id}
-                      source={movie.source}
-                      thumbnail={movie.thumbnail}
-                      title={movie.title}
-                      playlistPage={true}
-                      category={movie.category}
-                      addToLiked={() =>
-                        dispatch({
-                          type: "Add to Liked",
-                          payload: { video: movie, token: encodedToken },
-                        })
-                      }
-                      removeFromLiked={() =>
-                        dispatch({
-                          type: "Remove from Liked",
-                          payload: { video: movie, token: encodedToken },
-                        })
-                      }
-                      addToWatchLater={() =>
-                        dispatch({
-                          type: "Add to Watch Later",
-                          payload: { video: movie, token: encodedToken },
-                        })
-                      }
-                      addToHistory={() =>
-                        dispatch({
-                          type: "Add to History",
-                          payload: { video: movie, token: encodedToken },
-                        })
-                      }
-                      removeFromPlaylist={() =>
-                        dispatch({
-                          type: "Remove from Playlist",
-                          payload: {
-                            playlistId: playlist.id,
-                            video: movie,
-                            token: encodedToken,
-                          },
-                        })
-                      }
-                      likeButtonColor={
-                        state.likedArray.find(
-                          (element) => element.id === movie.id
-                        )
-                          ? "var(--binge-red)"
-                          : "whitesmoke"
-                      }
-                      dislikeButtonColor={
-                        state.dislikedArray.find(
-                          (element) => element.id === movie.id
-                        )
-                          ? "var(--binge-red)"
-                          : "whitesmoke"
-                      }
-                      watchLaterButtonColor={
-                        state.watchLaterArray.find(
-                          (element) => element.id === movie.id
-                        )
-                          ? "var(--binge-red)"
-                          : "whitesmoke"
-                      }
-                    />
-                  );
-                })}
-            </div>
-          );
-        })}
+        {playlist.videos.length > 0 &&
+          Number(playlistId) === playlist.id &&
+          playlist.videos.map((movie) => {
+            return (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                source={movie.source}
+                thumbnail={movie.thumbnail}
+                title={movie.title}
+                playlistPage={true}
+                category={movie.category}
+                addToLiked={() =>
+                  dispatch({
+                    type: "Add to Liked",
+                    payload: { video: movie, token: encodedToken },
+                  })
+                }
+                removeFromLiked={() =>
+                  dispatch({
+                    type: "Remove from Liked",
+                    payload: { video: movie, token: encodedToken },
+                  })
+                }
+                addToWatchLater={() =>
+                  dispatch({
+                    type: "Add to Watch Later",
+                    payload: { video: movie, token: encodedToken },
+                  })
+                }
+                addToHistory={() =>
+                  dispatch({
+                    type: "Add to History",
+                    payload: { video: movie, token: encodedToken },
+                  })
+                }
+                removeFromPlaylist={() =>
+                  dispatch({
+                    type: "Remove from Playlist",
+                    payload: {
+                      playlistId: playlist.id,
+                      video: movie,
+                      token: encodedToken,
+                    },
+                  })
+                }
+                likeButtonColor={
+                  state.likedArray.find((element) => element.id === movie.id)
+                    ? "var(--binge-red)"
+                    : "whitesmoke"
+                }
+                dislikeButtonColor={
+                  state.dislikedArray.find((element) => element.id === movie.id)
+                    ? "var(--binge-red)"
+                    : "whitesmoke"
+                }
+                watchLaterButtonColor={
+                  state.watchLaterArray.find(
+                    (element) => element.id === movie.id
+                  )
+                    ? "var(--binge-red)"
+                    : "whitesmoke"
+                }
+              />
+            );
+          })}
       </div>
     </div>
   );
