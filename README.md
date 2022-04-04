@@ -3,6 +3,8 @@
 Binge is a free video library for you to watch your favourite Bollywood movies.
 The library offers movies in 4 different categories - Thrillers, Action, Drama and Romance.
 
+You can like, dislike, add to watch later, create custom playlists and add or remove videos to/from playlists.
+
 # How to run Binge on your local machine? 📹
 
 1. Go to https://github.com/tejas-muthya37/binge-review
