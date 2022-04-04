@@ -1,11 +1,15 @@
 import "./authenticate.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useToast } from "./../../Context/toast-context";
 import { useToken } from "./../../Context/token-context";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 function Authenticate(props) {
   const { encodedToken, setEncodedToken } = useToken();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("ENCODED_TOKEN_2", encodedToken);
@@ -105,9 +109,23 @@ function Authenticate(props) {
           </div>
           <div className="label-with-input">
             <label id="password-label" htmlFor="password">
-              Password *
+              <span>Password *</span>
+              <span
+                className="password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <VisibilityIcon fontSize="small" />
+                ) : (
+                  <VisibilityOffIcon fontSize="small" />
+                )}
+              </span>
             </label>
-            <input ref={passwordRef} type="password" id="password" />
+            <input
+              ref={passwordRef}
+              type={showPassword ? "text" : "password"}
+              id="password"
+            />
           </div>
         </div>
 
