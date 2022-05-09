@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 .categories-section img {
